@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Threading;
 using core.Helpers;
 using core.Implementations;
 using core.Interfaces;
@@ -13,15 +15,23 @@ namespace markovchain
 
 		static void Main(string[] args)
 		{
+			Console.OutputEncoding = Encoding.UTF8;
 			ITextLoader tl = new TextLoader();
 			var s = tl.Load(_samplesFolder);
 			var rs = RegexHelper.Clean(s);
 			var db = new DictogramBuilder(rs);
 
-			//db.Build();
-			var l = db.LoadJson(_models).Result;
-			//db.SaveJson(_models).Wait();
+			
 
+			var m = db.LoadJson(_models).Result;
+			var tg = new TextGenerator(m);
+			for (var i = 0; i < 1000; ++i)
+			{
+				var stes = tg.Generate(100000);
+				Console.WriteLine(stes);
+				Thread.Sleep(100);
+
+			}
 			Console.ReadLine();
 		}
 	}

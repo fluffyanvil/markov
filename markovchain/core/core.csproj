@@ -48,9 +48,11 @@
     <Compile Include="Helpers\RegexHelper.cs" />
     <Compile Include="Implementations\DictogramBuilder.cs" />
     <Compile Include="Implementations\TextCutter.cs" />
+    <Compile Include="Implementations\TextGenerator.cs" />
     <Compile Include="Implementations\TextLoader.cs" />
     <Compile Include="Interfaces\IDictogramBuilder.cs" />
     <Compile Include="Interfaces\ITextCutter.cs" />
+    <Compile Include="Interfaces\ITextGenerator.cs" />
     <Compile Include="Interfaces\ITextLoader.cs" />
     <Compile Include="ProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
