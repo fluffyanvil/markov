@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace core
@@ -16,10 +12,14 @@ namespace core
 		[JsonProperty("dependencies")]
 		public Dictionary<string, int> Dependencies { get; set; }
 
+		[JsonProperty("isTail")]
+		public bool IsTail { get; }
+
 		public ChainItem(string value, Dictionary<string, int> dependencies)
 		{
 			Value = value;
 			Dependencies = dependencies;
+			IsTail = !(dependencies.Count > 0);
 		}
 	}
 }
