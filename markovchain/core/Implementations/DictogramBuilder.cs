@@ -81,14 +81,21 @@ namespace core.Implementations
 			}
 		}
 
-		public async Task<IEnumerable<ChainItem>> LoadJson(string filename)
+		public async Task<IEnumerable<ChainItem>> LoadJson(string folder)
 		{
-			using (var reader = new StreamReader(filename, Encoding.GetEncoding(1251)))
+			var result = new List<ChainItem>();
+			var files = new DirectoryInfo(folder).GetFiles().Select(fi => fi.FullName);
+			foreach (var file in files)
 			{
-				var json = await reader.ReadToEndAsync();
-				var model = JsonConvert.DeserializeObject<IEnumerable<ChainItem>>(json);
-				return model;
+				using (var reader = new StreamReader(file, Encoding.UTF8))
+				{
+					var json = await reader.ReadToEndAsync();
+					var model = JsonConvert.DeserializeObject<IEnumerable<ChainItem>>(json);
+					result.AddRange(model);
+				}
 			}
+
+			return result;
 		}
 	}
 }

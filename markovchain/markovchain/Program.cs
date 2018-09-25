@@ -18,8 +18,9 @@ namespace markovchain
 			var rs = RegexHelper.Clean(s);
 			var db = new DictogramBuilder(rs);
 
-			db.Build();
-			db.SaveJson(_models).Wait();
+			//db.Build();
+			var l = db.LoadJson(_models).Result;
+			//db.SaveJson(_models).Wait();
 
 			Console.ReadLine();
 		}

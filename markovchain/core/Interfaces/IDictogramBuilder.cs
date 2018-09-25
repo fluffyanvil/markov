@@ -9,6 +9,6 @@ namespace core.Interfaces
 
 		Task SaveJson(string folder);
 
-		Task<IEnumerable<ChainItem>> LoadJson(string filename);
+		Task<IEnumerable<ChainItem>> LoadJson(string folder);
 	}
 }
