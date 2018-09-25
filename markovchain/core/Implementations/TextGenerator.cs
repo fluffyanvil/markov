@@ -23,7 +23,7 @@ namespace core.Implementations
 			sb.Append(startWord.Value);
 			for (int i = 0; i < maxLength; i++)
 			{
-				if (startWord?.Dependencies.Count > 1)
+				if (startWord?.Dependencies.Count > 0)
 				{
 					var nextWordIndex = new Random(Guid.NewGuid().GetHashCode()).Next(0, startWord.Dependencies.Count); ;
 					var nextWord = startWord.Dependencies?.ToArray()[nextWordIndex];
