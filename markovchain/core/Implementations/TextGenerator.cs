@@ -17,7 +17,7 @@ namespace core.Implementations
 		public string Generate(int maxLength)
 		{
 			var wordArray = _items.Where(i => i.Dependencies != null).ToArray();
-			var startWordIndex = new Random(Guid.NewGuid().GetHashCode()).Next(0, wordArray.Length);
+			var startWordIndex = new Random(Math.Abs(Guid.NewGuid().GetHashCode() - Environment.TickCount)).Next(0, wordArray.Length);
 			var startWord = wordArray[startWordIndex];
 			var sb = new StringBuilder();
 			sb.Append(startWord.Value);

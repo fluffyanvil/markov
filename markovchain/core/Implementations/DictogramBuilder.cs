@@ -43,23 +43,30 @@ namespace core.Implementations
 				Parallel.For(0, keysArray.Length, (i) =>
 				{
 					var key = keysArray[i];
-					var nextWords = Regex.Matches(_input, $@"(?<=\b{key}\s)(\w+)");
-					var deps = new Dictionary<string, int>();
-					foreach (Match nextWord in nextWords)
-					{
-						if (!deps.Keys.Contains(nextWord.Value))
-						{
-							deps.Add(nextWord.Value, 1);
-						}
-						else
-						{
-							deps[nextWord.Value]++;
-						}
-					}
-					var newChainItem = new ChainItem(key, deps.OrderByDescending(pair => pair.Value).ToDictionary(kvp => kvp.Key, kvp => kvp.Value));
-					result.Add(newChainItem);
-					progress.Report(((double)result.Count / keysArray.Length));
-				});
+                    try
+                    {
+                        var nextWords = Regex.Matches(_input, $@"(?<=\b{key}\s)(\w+)");
+                        var deps = new Dictionary<string, int>();
+                        foreach (Match nextWord in nextWords)
+                        {
+                            if (!deps.Keys.Contains(nextWord.Value))
+                            {
+                                deps.Add(nextWord.Value, 1);
+                            }
+                            else
+                            {
+                                deps[nextWord.Value]++;
+                            }
+                        }
+                        var newChainItem = new ChainItem(key, deps.OrderByDescending(pair => pair.Value).ToDictionary(kvp => kvp.Key, kvp => kvp.Value));
+                        result.Add(newChainItem);
+                        
+                    }
+                    catch (Exception e)
+                    {
+                    }
+                    progress.Report(((double)result.Count / keysArray.Length));
+                });
 			}
 			_result = result;
 			return result;
