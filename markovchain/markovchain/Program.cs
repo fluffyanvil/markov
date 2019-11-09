@@ -20,18 +20,18 @@ namespace markovchain
 			var s = tl.Load(_samplesFolder);
 			var rs = RegexHelper.Clean(s);
 			var db = new DictogramBuilder(rs);
-
+            db.Build();
 			
 
-			var m = db.LoadJson(_models).Result;
-			var tg = new TextGenerator(m);
-			for (var i = 0; i < 1000; ++i)
-			{
-				var stes = tg.Generate(100000);
-				Console.WriteLine(stes);
-				Thread.Sleep(100);
+			//var m = db.LoadJson(_models).Result;
+			//var tg = new TextGenerator(m);
+			//for (var i = 0; i < 1000; ++i)
+			//{
+			//	var stes = tg.Generate(100000);
+			//	Console.WriteLine(stes);
+			//	Thread.Sleep(100);
 
-			}
+			//}
 			Console.ReadLine();
 		}
 	}
