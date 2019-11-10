@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/markovchain/.vs/markovchain/v15/Server/sqlite3
+/markovchain/.vs/markovchain/v16/Server/sqlite3
+/markovchain/.vs/markovchain/v15/.suo
+/markovchain/.vs/markovchain/v16/.suo
+/markovchain/core/bin/Debug
+/markovchain/core/obj
+/markovchain/markovchain/bin/Debug
+/markovchain/markovchain/obj/Debug
+/markovchain/markovchain/obj/Release
+/markovchain/packages/Newtonsoft.Json.11.0.2
